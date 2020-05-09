@@ -1,0 +1,51 @@
+dotnet --info
+dotnet -h
+mkdir SocialApp
+cd SocialApp
+new sln
+dotnet new sln
+dotnet new classlib -n App
+dotnet new classlib -n Persistance
+dotnet new webapi -n API
+dotnet sln add .\Domain\
+dotnet sln add .\App\
+dotnet sln add .\Persistance\
+dotnet sln add .\API\
+dotnet sln list
+cd .\App\
+dotnet add reference ..\Domain\
+dotnet add reference ..\Persistance\
+cd ..
+cd .\API\
+dotnet add reference ..\App\
+cd ..
+cd .\Persistance\
+dotnet add reference ..\Domain\
+cd ..
+dotnet tool install --global dotnet-ef
+dotnet tool install --global dotnet-ef --version 2.*
+dotnet ef
+dotnet watch run
+
+dotnet restore
+dotnet tool install --global dotnet-ef
+Tool 'dotnet-ef' is already installed.
+dotnet ef
+dotnet ef migrations add InitialCreate -p Persistance/ -s API/
+
+
+
+
+GIT Cmnds::
+
+git status
+git init
+git add .
+git commit -m "First commit"
+git remote add origin https://github.com/Reevanth6/APICore_React.git
+git push -u origin master
+
+React::
+npx create-react-app client-app --use-npm --typescript
+npm config delete proxy
+npm start
